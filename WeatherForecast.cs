@@ -1,6 +1,6 @@
 using System;
 
-namespace proyectoPWEB
+namespace parcial
 {
     public class WeatherForecast
     {
