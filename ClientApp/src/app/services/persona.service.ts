@@ -20,4 +20,24 @@ export class PersonaService {
     personas.push(persona);
     localStorage.setItem('proyectos', JSON.stringify(personas));
   }
+
+  eliminarProyectos(identificacion) {
+    let items = JSON.parse(localStorage.getItem('proyectos'));
+    items.forEach(function (item, index) {
+      if (identificacion === item.identificacion) {
+        items.splice(index, 1);
+      }
+    });
+    localStorage.setItem('proyectos', JSON.stringify(items));
+  }
+
+  modificarProyectos(persona: Persona){
+    let items = JSON.parse(localStorage.getItem('proyectos'));
+    items.forEach(function (item, index) {
+      if (persona.identificacion === item.identificacion) {
+        items.splice(index, 1, persona);
+      }
+    });
+    localStorage.setItem('proyectos', JSON.stringify(items));
+  }
 }
