@@ -12,9 +12,13 @@ export class ConsultaProyectoComponent implements OnInit {
   constructor(private personaService:PersonaService) { }
 
   personas:Persona[];
-  searchText:string;
+  identificacionFiltro:string;
   
   ngOnInit() {
     this.personas = this.personaService.consultaProyectos();
+  }
+
+  filtroPersona(){
+    this.personas = this.personaService.filtroPersona(this.identificacionFiltro);
   }
 }

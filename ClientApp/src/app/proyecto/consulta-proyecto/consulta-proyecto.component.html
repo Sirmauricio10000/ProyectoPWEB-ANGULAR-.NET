@@ -2,9 +2,10 @@
 <br><br><br>
 <div>
     <div class="input-group">
-        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+        <input type="text" class="form-control rounded" name="filtro" [(ngModel)]="identificacionFiltro" placeholder="Buscar" aria-label="Search"
           aria-describedby="search-addon" />
-        <button type="button" class="btn btn-outline-primary">search</button>
+        <button type="button" class="btn btn-warning" (click)="filtroPersona()">Filtrar</button>
+        <button type="button" class="btn btn-info" style="margin-left: 10px" (click)="ngOnInit()">Limpiar</button>
       </div>
     <table class="table table-striped">
         <thead>

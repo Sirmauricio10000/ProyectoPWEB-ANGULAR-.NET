@@ -11,7 +11,7 @@ export class PersonaService {
   consultaProyectos(): Persona[] {
     return JSON.parse(localStorage.getItem('proyectos'));
   }
-  
+
   registroProyectos(persona: Persona) {
     let personas: Persona[] = [];
     if (this.consultaProyectos() != null) {
@@ -31,7 +31,7 @@ export class PersonaService {
     localStorage.setItem('proyectos', JSON.stringify(items));
   }
 
-  modificarProyectos(persona: Persona){
+  modificarProyectos(persona: Persona) {
     let items = JSON.parse(localStorage.getItem('proyectos'));
     items.forEach(function (item, index) {
       if (persona.identificacion === item.identificacion) {
@@ -39,5 +39,18 @@ export class PersonaService {
       }
     });
     localStorage.setItem('proyectos', JSON.stringify(items));
+  }
+
+  filtroPersona(idFiltro): Persona[] {
+
+    let listaDePersonasFiltrada: Persona[] = [];
+    let listaPersona = this.consultaProyectos();
+
+    listaPersona.forEach(function (item) {
+      if (idFiltro === item.identificacion) {
+        listaDePersonasFiltrada.push(item);
+      }
+    });
+    return listaDePersonasFiltrada;
   }
 }

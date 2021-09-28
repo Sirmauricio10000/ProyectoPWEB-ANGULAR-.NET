@@ -2,7 +2,7 @@
 <form>
     <div class="form-group">
         <label for="exampleInputPassword1">Referencia a eliminar</label>
-        <input type="text" class="form-control"  name="referenciaEliminar"  placeholder="Ingrese identificación del estudiante">
+        <input type="text" class="form-control"  name="referenciaEliminar" [(ngModel)]="referenciaEliminar" placeholder="Ingrese identificación del estudiante">
     </div>
     <button type="submit" class="btn btn-danger" (click)="eliminar()">Eliminar </button>
 </form> <br><br>
