@@ -20,6 +20,8 @@ import { ModificarPerfilComponent } from './proyecto/Estudiante/modificar-perfil
 import { ModificarProyectoComponent } from './proyecto/Estudiante/modificar-proyecto/modificar-proyecto.component';
 import { CancelarInscripcionComponent } from './proyecto/Estudiante/cancelar-inscripcion/cancelar-inscripcion.component';
 import { ConsultarProyectoEstudianteComponent } from './proyecto/Estudiante/consultar-proyecto-estudiante/consultar-proyecto-estudiante.component';
+import { HomeFuncionarioComponent } from './proyecto/Funcionario/home-funcionario/home-funcionario.component';
+import { NavFuncionarioComponent } from './proyecto/Funcionario/nav-funcionario/nav-funcionario.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { ConsultarProyectoEstudianteComponent } from './proyecto/Estudiante/cons
     ModificarProyectoComponent,
     CancelarInscripcionComponent,
     ConsultarProyectoEstudianteComponent,
+    HomeFuncionarioComponent,
+    NavFuncionarioComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -57,6 +61,8 @@ import { ConsultarProyectoEstudianteComponent } from './proyecto/Estudiante/cons
       { path: 'app-cancelar-inscripcion', component: CancelarInscripcionComponent},
       { path: 'app-modificar-proyecto', component: ModificarProyectoComponent},
       { path: 'app-consultar-proyecto-estudiante', component: ConsultarProyectoEstudianteComponent},
+      { path: 'app-home-funcionario', component: HomeFuncionarioComponent},
+      { path: 'app-nav-funcionario', component: NavFuncionarioComponent},
       { path: '', component: LoginComponent, pathMatch: 'full' },
     ]),
   ],

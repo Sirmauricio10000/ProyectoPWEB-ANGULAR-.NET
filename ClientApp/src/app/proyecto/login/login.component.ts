@@ -13,7 +13,8 @@ export class LoginComponent implements OnInit {
 
   usuario: string = "usuario";
   contra: string = "contra";
-  abrirHome: boolean = false;
+  abrirHomeEstudiante: boolean = false;
+  abrirHomeFuncionario: boolean = false;
   cerrarLogin: boolean = true;
 
   ngOnInit() {
@@ -21,11 +22,13 @@ export class LoginComponent implements OnInit {
 
   ingresar(){
     if(this.usuario==="estudiante" && this.contra==="estudiante"){
-      this.abrirHome = !this.abrirHome;
+      this.abrirHomeEstudiante = !this.abrirHomeEstudiante;
       this.cerrarLogin = !this.cerrarLogin;
     } else if(this.usuario==="funcionario" && this.contra==="funcionario"){
-      this.abrirHome = !this.abrirHome;
+      this.abrirHomeFuncionario = !this.abrirHomeFuncionario;
       this.cerrarLogin = !this.cerrarLogin;
+    } else{
+      alert("Usuario o contraseña incorrecto");
     }
     
   }
