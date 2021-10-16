@@ -1,0 +1,29 @@
+<div>
+    <app-nav-menu></app-nav-menu>
+</div>
+
+<div class="container">
+
+    <h1>Registro de proyectos</h1>
+    <form>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Identificacion estudiante</label>
+            <input type="text" class="form-control" name="id" [(ngModel)]="proyecto.identificacion"
+                placeholder="Ingrese identificación del estudiante">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputPassword1">Titulo proyecto</label>
+            <input type="text" class="form-control" name="titulo" [(ngModel)]="proyecto.tituloProyecto"
+                placeholder="Ingrese titulo del proyecto">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputPassword1">Link del proyecto</label>
+            <input type="text" class="form-control" name="titulo" [(ngModel)]="proyecto.tituloProyecto"
+                placeholder="Ingrese titulo del proyecto">
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="registrar()">Registrar</button>
+    </form>
+
+</div>

@@ -1,0 +1,30 @@
+<div>
+    <app-nav-menu></app-nav-menu>
+</div>
+
+<div class="container">
+    <h1>Realizar Peticiones</h1>
+    <form>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Identificacion del estudiante</label>
+            <input type="text" class="form-control" id="id" name="id" [(ngModel)]="peticion.identificacion"
+                placeholder="Ingrese identificación">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Tipo de solicitud</label>
+            <select class="form-control" aria-label="Default select example" [(ngModel)]="peticion.tipoPeticion"
+                name="proyecto" id="proyecto">
+                <option value="Brisas del Mar">Aplazamiento de proyecto</option>
+                <option value="Balcones de la Sierra">Retiro de proyecto</option>
+                <option value="Jardines del Rey">Actualizacion de proyecto</option>
+                <option value="Jardines del Rey">Otros</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Detalles de la peticion</label>
+            <textarea class="form-control" id="comentarios" name="comentarios" [(ngModel)]="peticion.comentario"
+                rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="enviar()">Enviar Petición</button>
+    </form>
+</div>
