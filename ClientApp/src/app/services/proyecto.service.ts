@@ -21,10 +21,10 @@ export class ProyectoService {
     localStorage.setItem('proyectos', JSON.stringify(proyectos));
   }
 
-  eliminarProyectos(identificacion) {
+  eliminarProyectos(codigoProyecto) {
     let items = JSON.parse(localStorage.getItem('proyectos'));
     items.forEach(function (item, index) {
-      if (identificacion === item.identificacion) {
+      if (codigoProyecto === item.codigoProyecto) {
         items.splice(index, 1);
       }
     });
@@ -34,7 +34,7 @@ export class ProyectoService {
   modificarProyectos(proyecto: Proyecto) {
     let items = JSON.parse(localStorage.getItem('proyectos'));
     items.forEach(function (item, index) {
-      if (proyecto.identificacion === item.identificacion) {
+      if (proyecto.codigoProyecto === item.codigoProyecto) {
         items.splice(index, 1, proyecto);
       }
     });
@@ -47,7 +47,7 @@ export class ProyectoService {
     let listaPersona = this.consultaProyectos();
 
     listaPersona.forEach(function (item) {
-      if (idFiltro === item.identificacion) {
+      if (idFiltro === item.codigoProyecto) {
         listaDePersonasFiltrada.push(item);
       }
     });

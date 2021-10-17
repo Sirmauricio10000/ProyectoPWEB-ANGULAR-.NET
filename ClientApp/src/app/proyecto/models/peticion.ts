@@ -1,6 +1,8 @@
 export class Peticion {
+    codigoPeticion: string;
     idSolicitante: string;
     tipoPeticion: string;
     estadoPeticion: string;
-    comentario: string;
+    contextoPeticion: string;
+    respuestPeticion: string;
 }

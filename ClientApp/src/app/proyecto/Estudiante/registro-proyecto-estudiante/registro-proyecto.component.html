@@ -4,24 +4,72 @@
 
 <div class="container">
 
-    <h1>Registro de proyectos</h1>
+    <h1>Registro de proyecto</h1>
     <form>
+
         <div class="form-group">
-            <label for="exampleInputEmail1">Identificacion estudiante</label>
-            <input type="text" class="form-control" name="id" [(ngModel)]="proyecto.identificacion"
-                placeholder="Ingrese identificación del estudiante">
+            <label for="exampleInputPassword1">Identificacion Investigador Princpal</label>
+            <input type="text" class="form-control" name="titulo">
         </div>
 
         <div class="form-group">
-            <label for="exampleInputPassword1">Titulo proyecto</label>
-            <input type="text" class="form-control" name="titulo" [(ngModel)]="proyecto.tituloProyecto"
-                placeholder="Ingrese titulo del proyecto">
+            <label for="exampleInputPassword1">Nombre Investigador Princpal</label>
+            <input type="text" class="form-control" name="titulo">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputPassword1">Identificacion Co-Investigador</label>
+            <input type="text" class="form-control" name="titulo" >
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputPassword1">Nombre Co-Investigador</label>
+            <input type="text" class="form-control" name="titulo" >
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputPassword1">Titulo del Proyecto</label>
+            <input type="text" class="form-control" name="titulo"  >
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputPassword1">Grupo de Investigación</label>
+            <input type="text" class="form-control" name="titulo"  >
+        </div>
+        
+        <div class="form-group">
+            <label class="form-label" for="form2Example22">Area del Proyecto</label>
+            <select class="form-control" aria-label="Default select example" name="tipo">
+                <option value="Ciencias Agrarias">Ciencias Agrarias </option>
+                <option value="Ciencias Biologicas">Ciencias Biológicas </option>
+                <option value="Ciencias Exactas y de la Tierra">Ciencias Exactas y de la Tierra </option>
+                <option value="Ciencias Humanas">Ciencias Humanas </option>
+                <option value="Ciencias Sociales Aplicadas">Ciencias Sociales Aplicadas  </option>
+                <option value="Ciencias de la Salud">Ciencias de la Salud  </option>
+                <option value="Ingenierias">Ingenierías </option>
+                <option value="Linguistica, Letras y Artes">Lingüística, Letras y Artes </option>
+                <option value="Otros">Otros  </option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputPassword1">Linea de Investigacion</label>
+            <input type="text" class="form-control" name="titulo"  >
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="form2Example22">Tipo de Proyecto</label>
+            <select class="form-control" aria-label="Default select example" name="tipo">
+                <option value="Investigación Basica">Investigación Básica </option>
+                <option value="Investigación aplicada ">Investigación aplicada  </option>
+                <option value="Desarrollo tecnológico o Experimental">Desarrollo tecnológico o Experimental </option>
+                <option value="Otro">Otro </option>
+            </select>
         </div>
 
         <div class="form-group">
             <label for="exampleInputPassword1">Link del proyecto</label>
-            <input type="text" class="form-control" name="titulo" [(ngModel)]="proyecto.tituloProyecto"
-                placeholder="Ingrese titulo del proyecto">
+            <input type="text" class="form-control" name="titulo" >
         </div>
         <button type="submit" class="btn btn-primary" (click)="registrar()">Registrar</button>
     </form>

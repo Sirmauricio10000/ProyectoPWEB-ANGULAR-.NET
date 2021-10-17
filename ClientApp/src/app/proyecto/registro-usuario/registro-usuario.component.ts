@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Usuario } from '../models/usuario';
 
@@ -9,7 +10,7 @@ import { Usuario } from '../models/usuario';
 })
 export class RegistroUsuarioComponent implements OnInit {
 
-  constructor(private personaService: UsuarioService) { }
+  constructor(private personaService: UsuarioService, private router: Router) { }
 
   usuario: Usuario;
   ngOnInit() {
@@ -19,5 +20,9 @@ export class RegistroUsuarioComponent implements OnInit {
   registrar() {
     alert("Se registro el proyecto " + JSON.stringify(this.usuario));
     this.personaService.registroUsuarios(this.usuario);
+  }
+
+  regresar() {
+    this.router.navigate([""]);
   }
 }
