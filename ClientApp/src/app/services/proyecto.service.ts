@@ -1,4 +1,8 @@
-import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Inject, Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
+import { HandleHttpErrorService } from '../@base/handle-http-error.service';
 import { Proyecto } from '../proyecto/models/proyecto';
 
 @Injectable({
@@ -6,51 +10,28 @@ import { Proyecto } from '../proyecto/models/proyecto';
 })
 export class ProyectoService {
 
-  constructor() { }
-
-  consultaProyectos(): Proyecto[] {
-    return JSON.parse(localStorage.getItem('proyectos'));
+  baseUrl: string;
+  constructor(
+    private http: HttpClient,
+    @Inject('BASE_URL') baseUrl: string,
+    private handleErrorService: HandleHttpErrorService) {
+    this.baseUrl = baseUrl;
   }
 
-  registroProyectos(proyecto: Proyecto) {
-    let proyectos: Proyecto[] = [];
-    if (this.consultaProyectos() != null) {
-      proyectos = this.consultaProyectos();
-    }
-    proyectos.push(proyecto);
-    localStorage.setItem('proyectos', JSON.stringify(proyectos));
+  get(): Observable<Proyecto[]> {
+    return this.http.get<Proyecto[]>(this.baseUrl + 'api/Proyecto')
+      .pipe(
+        tap(_ => this.handleErrorService.log('datos enviados')),
+        catchError(this.handleErrorService.handleError<Proyecto[]>('Consulta Proyecto', null))
+      );
+
   }
 
-  eliminarProyectos(codigoProyecto) {
-    let items = JSON.parse(localStorage.getItem('proyectos'));
-    items.forEach(function (item, index) {
-      if (codigoProyecto === item.codigoProyecto) {
-        items.splice(index, 1);
-      }
-    });
-    localStorage.setItem('proyectos', JSON.stringify(items));
-  }
-
-  modificarProyectos(proyecto: Proyecto) {
-    let items = JSON.parse(localStorage.getItem('proyectos'));
-    items.forEach(function (item, index) {
-      if (proyecto.codigoProyecto === item.codigoProyecto) {
-        items.splice(index, 1, proyecto);
-      }
-    });
-    localStorage.setItem('proyectos', JSON.stringify(items));
-  }
-
-  filtroPersona(idFiltro): Proyecto[] {
-
-    let listaDePersonasFiltrada: Proyecto[] = [];
-    let listaPersona = this.consultaProyectos();
-
-    listaPersona.forEach(function (item) {
-      if (idFiltro === item.codigoProyecto) {
-        listaDePersonasFiltrada.push(item);
-      }
-    });
-    return listaDePersonasFiltrada;
+  post(proyecto: Proyecto): Observable<Proyecto> {
+    return this.http.post<Proyecto>(this.baseUrl + 'api/Proyecto', Proyecto)
+      .pipe(
+        tap(_ => this.handleErrorService.log('datos enviados')),
+        catchError(this.handleErrorService.handleError<Proyecto>('Registrar Proyecto', null))
+      );
   }
 }

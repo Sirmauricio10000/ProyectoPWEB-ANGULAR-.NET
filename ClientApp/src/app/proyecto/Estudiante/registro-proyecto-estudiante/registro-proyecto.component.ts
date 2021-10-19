@@ -9,7 +9,7 @@ import { Proyecto } from '../../models/proyecto';
 })
 export class RegistroProyectoComponent implements OnInit {
 
-  constructor(private personaService: ProyectoService) { }
+  constructor(private proyectoService: ProyectoService) { }
 
   proyecto: Proyecto;
   ngOnInit() {
@@ -18,6 +18,6 @@ export class RegistroProyectoComponent implements OnInit {
 
   registrar() {
     alert("Se registro el proyecto " + JSON.stringify(this.proyecto));
-    this.personaService.registroProyectos(this.proyecto);
+    this.proyectoService.post(this.proyecto);
   }
 }

@@ -1,9 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './proyecto/Estudiante/nav-estudiante/nav-menu.component';
 import { HomeComponent } from './proyecto/Estudiante/home-estudiante/home.component';
@@ -22,6 +21,7 @@ import { CancelarInscripcionComponent } from './proyecto/Estudiante/cancelar-ins
 import { ConsultarProyectoEstudianteComponent } from './proyecto/Estudiante/consultar-proyecto-estudiante/consultar-proyecto-estudiante.component';
 import { HomeFuncionarioComponent } from './proyecto/Funcionario/home-funcionario/home-funcionario.component';
 import { NavFuncionarioComponent } from './proyecto/Funcionario/nav-funcionario/nav-funcionario.component';
+import { ProyectoService } from './services/proyecto.service';
 
 @NgModule({
   declarations: [
@@ -66,7 +66,7 @@ import { NavFuncionarioComponent } from './proyecto/Funcionario/nav-funcionario/
       { path: '', component: LoginComponent, pathMatch: 'full' },
     ]),
   ],
-  providers: [],
+  providers: [ProyectoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -9,16 +9,14 @@ import { Proyecto } from '../../models/proyecto';
 })
 export class ConsultaProyectoComponent implements OnInit {
 
-  constructor(private personaService:ProyectoService) { }
+  constructor(private proyectoService: ProyectoService) { }
 
   proyectos:Proyecto[];
   identificacionFiltro:string;
   
   ngOnInit() {
-    this.proyectos = this.personaService.consultaProyectos();
-  }
-
-  filtroPersona(){
-    this.proyectos = this.personaService.filtroPersona(this.identificacionFiltro);
+    this.proyectoService.get().subscribe(result => {
+      this.proyectos = result;
+      });
   }
 }

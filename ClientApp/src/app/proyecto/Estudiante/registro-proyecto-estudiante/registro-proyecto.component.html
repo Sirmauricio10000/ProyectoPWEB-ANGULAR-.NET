@@ -9,37 +9,37 @@
 
         <div class="form-group">
             <label for="exampleInputPassword1">Identificacion Investigador Princpal</label>
-            <input type="text" class="form-control" name="titulo">
+            <input type="text" class="form-control" name="id1" [(ngModel)]="proyecto.cedulaInvestigadorPrincipal">
         </div>
 
         <div class="form-group">
             <label for="exampleInputPassword1">Nombre Investigador Princpal</label>
-            <input type="text" class="form-control" name="titulo">
+            <input type="text" class="form-control" name="nombre1" [(ngModel)]="proyecto.nombreInvestigadorPrincipal">
         </div>
 
         <div class="form-group">
             <label for="exampleInputPassword1">Identificacion Co-Investigador</label>
-            <input type="text" class="form-control" name="titulo" >
+            <input type="text" class="form-control" name="id2" [(ngModel)]="proyecto.cedulaInvestigadorSecundario">
         </div>
 
         <div class="form-group">
             <label for="exampleInputPassword1">Nombre Co-Investigador</label>
-            <input type="text" class="form-control" name="titulo" >
+            <input type="text" class="form-control" name="nombre2" [(ngModel)]="proyecto.nombreInvestigadorSecundario">
         </div>
 
         <div class="form-group">
             <label for="exampleInputPassword1">Titulo del Proyecto</label>
-            <input type="text" class="form-control" name="titulo"  >
+            <input type="text" class="form-control" name="titulo"  [(ngModel)]="proyecto.tituloProyecto">
         </div>
 
         <div class="form-group">
             <label for="exampleInputPassword1">Grupo de Investigación</label>
-            <input type="text" class="form-control" name="titulo"  >
+            <input type="text" class="form-control" name="grupo"  [(ngModel)]="proyecto.grupoDeInvestigacion">
         </div>
         
         <div class="form-group">
             <label class="form-label" for="form2Example22">Area del Proyecto</label>
-            <select class="form-control" aria-label="Default select example" name="tipo">
+            <select class="form-control" aria-label="Default select example" name="area" [(ngModel)]="proyecto.areaProyecto">
                 <option value="Ciencias Agrarias">Ciencias Agrarias </option>
                 <option value="Ciencias Biologicas">Ciencias Biológicas </option>
                 <option value="Ciencias Exactas y de la Tierra">Ciencias Exactas y de la Tierra </option>
@@ -54,12 +54,12 @@
 
         <div class="form-group">
             <label for="exampleInputPassword1">Linea de Investigacion</label>
-            <input type="text" class="form-control" name="titulo"  >
+            <input type="text" class="form-control" name="linea"  [(ngModel)]="proyecto.lineaDeInvestigacion">
         </div>
 
         <div class="form-group">
             <label class="form-label" for="form2Example22">Tipo de Proyecto</label>
-            <select class="form-control" aria-label="Default select example" name="tipo">
+            <select class="form-control" aria-label="Default select example" name="tipo" [(ngModel)]="proyecto.tipoProyecto">
                 <option value="Investigación Basica">Investigación Básica </option>
                 <option value="Investigación aplicada ">Investigación aplicada  </option>
                 <option value="Desarrollo tecnológico o Experimental">Desarrollo tecnológico o Experimental </option>
@@ -69,7 +69,7 @@
 
         <div class="form-group">
             <label for="exampleInputPassword1">Link del proyecto</label>
-            <input type="text" class="form-control" name="titulo" >
+            <input type="text" class="form-control" name="link" [(ngModel)]="proyecto.linkProyecto">
         </div>
         <button type="submit" class="btn btn-primary" (click)="registrar()">Registrar</button>
     </form>

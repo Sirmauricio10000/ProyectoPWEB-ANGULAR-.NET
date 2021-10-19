@@ -17,15 +17,4 @@ export class GestionProyectoComponent implements OnInit {
   ngOnInit() {
     this.proyecto = new Proyecto;
   }
-
-  modificar(){
-    alert("Se modifico el proyecto " + JSON.stringify(this.proyecto));
-    this.personaService.modificarProyectos(this.proyecto);
-  }
-
-  eliminar(){
-    alert("Se elimino el proyecto " + this.referenciaEliminar);
-    this.personaService.eliminarProyectos(this.referenciaEliminar);
-  }
-
 }

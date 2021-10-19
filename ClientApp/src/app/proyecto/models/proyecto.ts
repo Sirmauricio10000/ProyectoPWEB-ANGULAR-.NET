@@ -1,7 +1,5 @@
-import { Usuario } from "./usuario";
-
 export class Proyecto {
-    codigoProyecto: string;
+    codigoProyecto: number;
     tituloProyecto: string;
     cedulaInvestigadorPrincipal: string;
     nombreInvestigadorPrincipal: string;
