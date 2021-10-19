@@ -17,7 +17,7 @@ namespace ProyectoPWEB.Controllers
     [Route("api/[controller]")]
     public class ProyectoController : ControllerBase
     {
-        //private IConfiguration _configuration;
+        private IConfiguration _configuration;
 
         private readonly ProyectoService proyectoService;
 
@@ -26,7 +26,7 @@ namespace ProyectoPWEB.Controllers
             proyectoService = new ProyectoService(context);
         }
 
-        /*
+        
         [HttpPost]
         public ActionResult<Proyecto> Guardar(ProyectoInputModel proyectoInput)
         {
@@ -87,6 +87,6 @@ namespace ProyectoPWEB.Controllers
             var personas = proyectoService.ConsultarTodos().Select(p => new ProyectoViewModel(p));
             return personas;
         }
-        */
+        
     }
 }
