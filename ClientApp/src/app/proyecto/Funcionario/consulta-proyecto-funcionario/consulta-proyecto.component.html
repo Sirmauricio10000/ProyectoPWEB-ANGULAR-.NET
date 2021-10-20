@@ -3,33 +3,54 @@
 </div>
 
 <div class="container">
-    <h1>Lista de Proyectos</h1>
-    <br><br><br>
-    <div>
-        <div class="input-group">
-            <input type="text" class="form-control rounded" name="filtro" [(ngModel)]="identificacionFiltro"
-                placeholder="Buscar" aria-label="Search" aria-describedby="search-addon" />
-            <button type="button" class="btn btn-warning" (click)="filtroPersona()">Filtrar</button>
-            <button type="button" class="btn btn-info" style="margin-left: 10px" (click)="ngOnInit()">Limpiar</button>
-        </div>
-        <table class="table table-striped">
+    <br>
+    <h1 style=" text-align:justify;font-family:sans-serif;">Consulta de proyectos</h1>
+    <br>
+    <img src="https://www.gob.mx/cms/uploads/article/main_image/23162/2Criterios_de_.jpg" class="img-fluid" alt="..."
+        width="70%" style="margin-left: 10%;">
+    <div style="margin-left: 60%;" class="d-grid gap-2 d-md-block">
+    </div>
+
+    <br> <br>
+    <h2 style="margin-left: 27%;">Listado de proyectos registrado</h2>
+    <br>
+    <div class="container">
+        <table class="table table-success table-striped">
             <thead>
                 <tr>
-                    <th scope="col">Codigo Proyecto</th>
-                    <th scope="col">Identificación</th>
-                    <th scope="col">Nombre Estudiante </th>
-                    <th scope="col">Titulo Proyecto </th>
+                    <td> codigoProyecto</td>
+                    <td> tituloProyecto</td>
+                    <td> cedulaInvestigadorPrincipal</td>
+                    <td> cedulaInvestigadorSecundario</td>
+                    <td> areaProyecto</td>
+                    <td> lineaDeInvestigacion</td>
+                    <td> tipoProyecto</td>
                 </tr>
             </thead>
+
             <tbody>
-                <tr *ngFor="let item of personas; index as i ">
-                    <th scope="row">{{ i + 1 }}</th>
-                    <td>{{ item.identificacion }} </td>
-                    <td>{{ item.nombreEstudiante }}</td>
-                    <td>{{ item.tituloProyecto }}</td>
+                <tr *ngFor="let proyecto of proyectos|ProyectoPipe:filtro;index as i">
+                    <td>{{proyecto.codigoProyecto}} </td>
+                    <td>{{proyecto.tituloProyecto}} </td>
+                    <td>{{proyecto.cedulaInvestigadorPrincipal}} </td>
+                    <td>{{proyecto.cedulaInvestigadorSecundario}} </td>
+                    <td>{{proyecto.areaProyecto}} </td>
+                    <td>{{proyecto.lineaDeInvestigacion}} </td>
+                    <td>{{proyecto.tipoProyecto}} </td>
                 </tr>
             </tbody>
         </table>
-        <br><br><br>
+    </div>
+
+
+    <div>
+
+        <div class="centrar">
+            <input type="text" placeholder="Titulo de Proyecto" name="filtro" [(ngModel)]="filtro" style="margin-right: 5px;">
+            <button class="btn btn-primary" type="button" (click)="limparBusqueda()">Limpiar Busqueda</button>
+        </div>
+
     </div>
 </div>
+<br>
+<br>

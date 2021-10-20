@@ -24,7 +24,6 @@ export class ProyectoService {
         tap(_ => this.handleErrorService.log('datos enviados')),
         catchError(this.handleErrorService.handleError<Proyecto[]>('Consulta Proyecto', null))
       );
-
   }
 
   post(proyecto: Proyecto): Observable<Proyecto> {

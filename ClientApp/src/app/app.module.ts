@@ -22,6 +22,7 @@ import { ConsultarProyectoEstudianteComponent } from './proyecto/Estudiante/cons
 import { HomeFuncionarioComponent } from './proyecto/Funcionario/home-funcionario/home-funcionario.component';
 import { NavFuncionarioComponent } from './proyecto/Funcionario/nav-funcionario/nav-funcionario.component';
 import { ProyectoService } from './services/proyecto.service';
+import { ConsultaProyectoPipe } from './proyecto/pipes/consulta-proyecto.pipe';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { ProyectoService } from './services/proyecto.service';
     ConsultarProyectoEstudianteComponent,
     HomeFuncionarioComponent,
     NavFuncionarioComponent,
+    ConsultaProyectoPipe,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
