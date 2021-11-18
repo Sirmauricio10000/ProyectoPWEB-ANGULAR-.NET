@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AlertModalComponent } from 'src/app/@base/alert-modal/alert-modal.component';
 import { ProyectoService } from 'src/app/services/proyecto.service';
 import { Proyecto } from '../../models/proyecto';
 
@@ -9,7 +11,7 @@ import { Proyecto } from '../../models/proyecto';
 })
 export class RegistroProyectoComponent implements OnInit {
 
-  constructor(private proyectoService: ProyectoService) { }
+  constructor(private proyectoService: ProyectoService, private modalService: NgbModal) { }
 
   proyecto: Proyecto;
   ngOnInit() {
@@ -17,7 +19,13 @@ export class RegistroProyectoComponent implements OnInit {
   }
 
   registrar() {
-    alert("Se registro el proyecto " + JSON.stringify(this.proyecto));
-    this.proyectoService.post(this.proyecto);
+    this.proyectoService.post(this.proyecto).subscribe(p => {
+      if (p != null) {
+      const messageBox = this.modalService.open(AlertModalComponent)
+      messageBox.componentInstance.title = "Resultado Operación";
+      messageBox.componentInstance.message = 'Proyecto registrado correctamente';
+      this.proyecto = p;
+      }
+    });
   }
 }
