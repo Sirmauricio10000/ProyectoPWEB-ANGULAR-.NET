@@ -2,43 +2,25 @@
   <app-nav-menu></app-nav-menu>
 </div>
 
-
 <div class="container">
-  <h1>Perfil del estudiante</h1>
-  <br>
-  <img style="margin-left:35% ;"
-    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOcCR9Qg_yFyOD4CA6ITWOGJM02y9JqwwLLA&usqp=CAU" alt="">
-  <br> <br> <br>
-
-
-  <form>
+  <h1>Perfil del Estudiante</h1>
+  <br><br>
+  <div>
     <div class="form-group">
-      <label for="exampleInputPassword1">Ingrese Identificacion</label>
-      <input type="text" class="form-control" name="id" [(ngModel)]="id">
+      <label for="exampleInputEmail1">Identificacion</label>
+      <input type="text" class="form-control" name="id" disabled>
     </div>
-
     <div class="form-group">
-      <label for="exampleInputPassword1">Nombre del estudiante</label>
-      <input type="text" class="form-control" name="nombre" [(ngModel)]="nombre" disabled>
+      <label for="exampleInputPassword1">Nombre</label>
+      <input type="text" class="form-control" name="nombre" disabled>
     </div>
-
     <div class="form-group">
       <label for="exampleInputPassword1">Correo Electronico</label>
-      <input type="text" class="form-control" name="correo" [(ngModel)]="correo" disabled>
+      <input type="text" class="form-control" name="correo" disabled>
     </div>
-
-    <div>
+    <div class="form-group">
       <label for="exampleInputPassword1">Telefono</label>
-      <input type="text" class="form-control" name="telefono" [(ngModel)]="telefono" disabled>
+      <input type="text" class="form-control" name="telefono" disabled>
     </div>
-
-  </form>
-
-  <br><br>
-  <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button" name="ingresar"
-    (click)="consultar()">Consultar</button>
-
-  <br> <br> <br> <br>
-
-
-</div>
+  </div>
+</div> <br><br>

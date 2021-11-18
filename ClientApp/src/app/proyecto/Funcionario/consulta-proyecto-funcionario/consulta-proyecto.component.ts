@@ -14,11 +14,14 @@ export class ConsultaProyectoComponent implements OnInit {
 
   constructor(private proyectoService: ProyectoService) { }
 
+  proyecto: Proyecto;
   proyectos: Proyecto[];
   filtro: string;
 
   ngOnInit() {
-    this.proyectoService.get().subscribe(result => {this.proyectos = result;});
+    this.proyectoService.get().subscribe(result => {
+      this.proyectos = result;
+    });
   }
 
   filtroAvanzado() {

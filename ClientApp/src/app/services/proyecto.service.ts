@@ -20,22 +20,17 @@ export class ProyectoService {
 
   get(): Observable<Proyecto[]> {
     return this.http.get<Proyecto[]>(this.baseUrl + 'api/Proyecto')
-      .pipe(tap(),
+      .pipe(
+        tap(_ => this.handleErrorService.log('datos enviados')),
         catchError(this.handleErrorService.handleError<Proyecto[]>('Consulta Proyecto', null))
       );
   }
 
   post(proyecto: Proyecto): Observable<Proyecto> {
-    return this.http.post<Proyecto>(this.baseUrl + 'api/Proyecto', proyecto)
-      .pipe(tap(),
+    return this.http.post<Proyecto>(this.baseUrl + 'api/Proyecto', Proyecto)
+      .pipe(
+        tap(_ => this.handleErrorService.log('datos enviados')),
         catchError(this.handleErrorService.handleError<Proyecto>('Registrar Proyecto', null))
-      );
-  }
-
-  put(proyecto: Proyecto): Observable<Proyecto> {
-    return this.http.put<Proyecto>(this.baseUrl + 'api/Proyecto', proyecto)
-      .pipe(tap(),
-        catchError(this.handleErrorService.handleError<Proyecto>('Actualizar Proyecto', null))
       );
   }
 }

@@ -1,8 +1,4 @@
-import { HttpClient } from '@angular/common/http';
-import { Inject, Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
-import { HandleHttpErrorService } from '../@base/handle-http-error.service';
+import { Injectable } from '@angular/core';
 import { Usuario } from '../proyecto/models/usuario';
 
 @Injectable({
@@ -10,32 +6,18 @@ import { Usuario } from '../proyecto/models/usuario';
 })
 export class UsuarioService {
 
-  baseUrl: string;
-  constructor(
-    private http: HttpClient,
-    @Inject('BASE_URL') baseUrl: string,
-    private handleErrorService: HandleHttpErrorService) {
-    this.baseUrl = baseUrl;
-  }
+  constructor() { }
 
-  get(): Observable<Usuario[]> {
-    return this.http.get<Usuario[]>(this.baseUrl + 'api/Usuario')
-      .pipe(tap(),
-        catchError(this.handleErrorService.handleError<Usuario[]>('Consulta Usuario', null))
-      );
+  consultaUsuarios(): Usuario[] {
+    return JSON.parse(localStorage.getItem('usuarios'));
   }
-
-  post(usuario: Usuario): Observable<Usuario> {
-    return this.http.post<Usuario>(this.baseUrl + 'api/Usuario', usuario)
-      .pipe(tap(),
-        catchError(this.handleErrorService.handleError<Usuario>('Registrar Usuario', null))
-      );
-  }
-
-  put(usuario: Usuario): Observable<Usuario> {
-    return this.http.put<Usuario>(this.baseUrl + 'api/Usuario', usuario)
-      .pipe(tap(),
-        catchError(this.handleErrorService.handleError<Usuario>('Actualizar Usuario', null))
-      );
+  
+  registroUsuarios(usuario: Usuario) {
+    let usuarios: Usuario[] = [];
+    if (this.consultaUsuarios() != null) {
+      usuarios = this.consultaUsuarios();
+    }
+    usuarios.push(usuario);
+    localStorage.setItem('usuarios', JSON.stringify(usuarios));
   }
 }

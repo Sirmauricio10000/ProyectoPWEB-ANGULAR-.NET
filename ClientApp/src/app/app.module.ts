@@ -23,10 +23,6 @@ import { HomeFuncionarioComponent } from './proyecto/Funcionario/home-funcionari
 import { NavFuncionarioComponent } from './proyecto/Funcionario/nav-funcionario/nav-funcionario.component';
 import { ProyectoService } from './services/proyecto.service';
 import { ConsultaProyectoPipe } from './proyecto/pipes/consulta-proyecto.pipe';
-import { AsignarEvaluadoresComponent } from './proyecto/Funcionario/asignar-evaluadores/asignar-evaluadores.component';
-import { AlertModalComponent } from './@base/alert-modal/alert-modal.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ConcederPermisosComponent } from './proyecto/funcionario/conceder-permisos/conceder-permisos.component';
 
 @NgModule({
   declarations: [
@@ -49,14 +45,10 @@ import { ConcederPermisosComponent } from './proyecto/funcionario/conceder-permi
     HomeFuncionarioComponent,
     NavFuncionarioComponent,
     ConsultaProyectoPipe,
-    AsignarEvaluadoresComponent,
-    AlertModalComponent,
-    ConcederPermisosComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
-    NgbModule,
     FormsModule,
     RouterModule.forRoot([
       { path: 'app-home', component: HomeComponent},
@@ -73,12 +65,9 @@ import { ConcederPermisosComponent } from './proyecto/funcionario/conceder-permi
       { path: 'app-consultar-proyecto-estudiante', component: ConsultarProyectoEstudianteComponent},
       { path: 'app-home-funcionario', component: HomeFuncionarioComponent},
       { path: 'app-nav-funcionario', component: NavFuncionarioComponent},
-      { path: 'app-asignar-evaluadores', component: AsignarEvaluadoresComponent},
-      { path: 'app-conceder-permisos', component: ConcederPermisosComponent},
       { path: '', component: LoginComponent, pathMatch: 'full' },
     ]),
   ],
-  entryComponents:[AlertModalComponent],
   providers: [ProyectoService],
   bootstrap: [AppComponent]
 })

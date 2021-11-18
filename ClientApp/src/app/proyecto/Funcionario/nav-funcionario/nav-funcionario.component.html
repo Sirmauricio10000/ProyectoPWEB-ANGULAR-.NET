@@ -15,32 +15,17 @@
             </li>
 
 
+            <li class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
+                <a class="nav-link text-dark" [routerLink]="['/']">Consultar Peticiones</a>
+              </li>
 
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
-                aria-expanded="false">Administrar</a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" [routerLink]="['/app-conceder-permisos']"> Conceder Permisos de Usuario</a></li>
-                <li><a class="dropdown-item" [routerLink]="['/']"> Consultar Peticiones</a></li>
-              </ul>
-            </li>
-
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
-                aria-expanded="false">Perfil</a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" [routerLink]="['/']"> Consultar Perfil</a></li>
-              </ul>
-            </li>
-
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
-                aria-expanded="false">Proyectos</a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" [routerLink]="['/app-consulta-proyecto']"> Consultar Proyectos</a></li>
-                <li><a class="dropdown-item" [routerLink]="['/app-asignar-evaluadores']"> Asignar Evaluadores</a></li>
-              </ul>
-            </li>
+            <li class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
+                <a class="nav-link text-dark" [routerLink]="['/']">Perfil Administrativo</a>
+              </li>
+  
+            <li class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
+                <a class="nav-link text-dark" [routerLink]="['/app-consulta-proyecto']">Consultar Proyectos</a>
+              </li>
 
             <li class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
               <a class="nav-link text-dark" [routerLink]="['/']">Cerrar Sesión</a>

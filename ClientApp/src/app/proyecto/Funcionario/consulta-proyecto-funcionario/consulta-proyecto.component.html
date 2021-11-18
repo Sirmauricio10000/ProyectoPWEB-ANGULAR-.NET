@@ -18,27 +18,25 @@
         <table class="table table-success table-striped">
             <thead>
                 <tr>
-                    <td> Codigo</td>
-                    <td> Investigador1</td>
-                    <td> Investigador2</td>
-                    <td> Titulo</td>
-                    <td> Area</td>
-                    <td> Linea</td>
-                    <td> Tipo</td>
-                    <td> Fecha Presentacion</td>
+                    <td> codigoProyecto</td>
+                    <td> tituloProyecto</td>
+                    <td> cedulaInvestigadorPrincipal</td>
+                    <td> cedulaInvestigadorSecundario</td>
+                    <td> areaProyecto</td>
+                    <td> lineaDeInvestigacion</td>
+                    <td> tipoProyecto</td>
                 </tr>
             </thead>
 
             <tbody>
                 <tr *ngFor="let proyecto of proyectos|ProyectoPipe:filtro;index as i">
                     <td>{{proyecto.codigoProyecto}} </td>
-                    <td>{{proyecto.investigadorPrincipal.identificacionUsuario}} </td>
-                    <td>{{proyecto.investigadorSecundario.identificacionUsuario}} </td>
                     <td>{{proyecto.tituloProyecto}} </td>
+                    <td>{{proyecto.cedulaInvestigadorPrincipal}} </td>
+                    <td>{{proyecto.cedulaInvestigadorSecundario}} </td>
                     <td>{{proyecto.areaProyecto}} </td>
                     <td>{{proyecto.lineaDeInvestigacion}} </td>
                     <td>{{proyecto.tipoProyecto}} </td>
-                    <td>{{proyecto.fechaPresentacion | date:'d/M/yyyy  h:mm a'}} </td>
                 </tr>
             </tbody>
         </table>
