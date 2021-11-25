@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Datos;
 using Entidad;
 using Logica;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -45,13 +46,10 @@ namespace ProyectoPWEB.Controllers
         {
             var usuario =
                 new Usuario {
-                    identificacionUsuario = usuarioInput.identificacionUsuario,
-                    tipoIdentificacionUsuario = usuarioInput.tipoIdentificacionUsuario,
-                    nombreUsuario = usuarioInput.nombreUsuario,
-                    correoUsuario = usuarioInput.correoUsuario,
-                    telefonoUsuario = usuarioInput.telefonoUsuario,
-                    tipoDeUsuario = usuarioInput.tipoDeUsuario,
-                    contraUsuario = usuarioInput.contraUsuario
+                    userName = usuarioInput.userName,
+                    userType = usuarioInput.userType,
+                    password = usuarioInput.password,
+                    persona = usuarioInput.persona,
                 };
             return usuario;
         }
@@ -60,13 +58,10 @@ namespace ProyectoPWEB.Controllers
         {
             var usuario =
                 new Usuario {
-                    identificacionUsuario = usuarioUpdate.identificacionUsuario,
-                    tipoIdentificacionUsuario = usuarioUpdate.tipoIdentificacionUsuario,
-                    nombreUsuario = usuarioUpdate.nombreUsuario,
-                    correoUsuario = usuarioUpdate.correoUsuario,
-                    telefonoUsuario = usuarioUpdate.telefonoUsuario,
-                    tipoDeUsuario = usuarioUpdate.tipoDeUsuario,
-                    contraUsuario = usuarioUpdate.contraUsuario
+                    userName = usuarioUpdate.userName,
+                    userType = usuarioUpdate.userType,
+                    password = usuarioUpdate.password,
+                    persona = usuarioUpdate.persona,
                 };
             return usuario;
         }
@@ -74,10 +69,7 @@ namespace ProyectoPWEB.Controllers
         [HttpGet]
         public IEnumerable<UsuarioViewModel> Gets()
         {
-            var usuarios =
-                usuarioService
-                    .ConsultarTodos()
-                    .Select(p => new UsuarioViewModel(p));
+            var usuarios = usuarioService.ConsultarTodos().Select(p => new UsuarioViewModel(p));
             return usuarios;
         }
 

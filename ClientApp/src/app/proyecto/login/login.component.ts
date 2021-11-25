@@ -24,25 +24,5 @@ export class LoginComponent implements OnInit {
   }
 
   ingresar(){
-    this.usuarioService.get().subscribe(result => {
-      this.usuarios = result;
-    })
-    if (this.usuarios.length == 0) alert("Error: No hay usuarios Registrados");
-    else{
-      this.usuarios.forEach(key => {
-        if(key.identificacionUsuario==this.usuario && key.contraUsuario==this.contra && key.tipoDeUsuario=="estudiante")
-        {
-          this.abrirHomeEstudiante = !this.abrirHomeEstudiante;
-          this.cerrarLogin = !this.cerrarLogin;
-          alert("Bienvenido " + key.nombreUsuario.toUpperCase()); this.existe = true;
-        } else if (key.identificacionUsuario==this.usuario && key.contraUsuario==this.contra && key.tipoDeUsuario=="administrador"){
-          this.abrirHomeFuncionario = !this.abrirHomeFuncionario;
-          this.cerrarLogin = !this.cerrarLogin;
-          alert("Bienvenido " + key.nombreUsuario.toUpperCase()); this.existe = true;
-        }
-      });
-    }
-
-    if (this.existe === false) alert("Usuario o Contraseña Incorrecto")
   }
 }

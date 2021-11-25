@@ -5,11 +5,14 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './nav-funcionario.component.html',
   styleUrls: ['./nav-funcionario.component.css']
 })
-export class NavFuncionarioComponent implements OnInit {
+export class NavFuncionarioComponent {
+  isExpanded = false;
 
-  constructor() { }
-
-  ngOnInit() {
+  collapse() {
+    this.isExpanded = false;
   }
 
+  toggle() {
+    this.isExpanded = !this.isExpanded;
+  }
 }

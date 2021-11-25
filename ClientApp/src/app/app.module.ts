@@ -26,7 +26,7 @@ import { ConsultaProyectoPipe } from './proyecto/pipes/consulta-proyecto.pipe';
 import { AsignarEvaluadoresComponent } from './proyecto/Funcionario/asignar-evaluadores/asignar-evaluadores.component';
 import { AlertModalComponent } from './@base/alert-modal/alert-modal.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ConcederPermisosComponent } from './proyecto/funcionario/conceder-permisos/conceder-permisos.component';
+import { ConcederPermisosComponent } from './proyecto/Funcionario/conceder-permisos/conceder-permisos.component';
 
 @NgModule({
   declarations: [

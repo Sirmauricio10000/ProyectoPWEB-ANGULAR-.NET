@@ -1,4 +1,6 @@
+using System.Text;
 using Datos;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -7,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 
 namespace proyectoPWEB
 {
@@ -22,17 +25,49 @@ namespace proyectoPWEB
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            ///antecede configuración de DbContext
+            services.AddControllersWithViews();
+
+            #region    configure strongly typed settings objects
+            var appSettingsSection = Configuration.GetSection("AppSetting");
+            services.Configure<AppSetting>(appSettingsSection);
+            #endregion
+
+            #region Configure jwt authentication inteprete el token 
+            var appSettings = appSettingsSection.Get<AppSetting>();
+            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(x =>
+            {
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
+            });
+            #endregion
+
             // Configurar cadena de Conexion con EF
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<ProyectoContext>(p =>p.UseSqlServer(connectionString));
             services.AddControllersWithViews();
 
             // In production, the Angular files will be served from this directory
-            services
-                .AddSpaStaticFiles(configuration =>
+            services.AddSpaStaticFiles(configuration =>
                 {
                     configuration.RootPath = "ClientApp/dist";
                 });
+
+                
             services.AddSwaggerGen();
         }
 
@@ -59,19 +94,23 @@ namespace proyectoPWEB
             }
 
             app.UseSwagger();
-            app
-                .UseSwaggerUI(c =>
+            app.UseSwaggerUI(c =>
                 {
                     c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
                 });
 
             app.UseRouting();
 
-            app
-                .UseEndpoints(endpoints =>
+            #region global cors policy activate Authentication/Authorization
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            app.UseAuthentication();
+            app.UseAuthorization();
+            #endregion
+
+
+            app.UseEndpoints(endpoints =>
                 {
-                    endpoints
-                        .MapControllerRoute(name: "default",
+                    endpoints.MapControllerRoute(name: "default",
                         pattern: "{controller}/{action=Index}/{id?}");
                 });
 
